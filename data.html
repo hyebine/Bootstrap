@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>data</title>
+  <!-- 부트스트랩 4.6 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<!-- 내거 -->
+  <script src="./js/jquery.js"></script>
+
+</head>
+
+<body>
+  <ul class="list d-flex justify-content-center">
+
+    <li data-filter=".t">여행</li>
+    <li data-filter=".s">공부</li>
+    <li data-filter=".h">취미</li>
+    <li data-filter=".e">기타</li>
+  </ul>
+  <ul class="content d-flex flex-wrap">
+    <li class="t col-4 border p-4">컨텐츠t</li>
+    <li class="t col-4 border p-4">컨텐츠t</li>
+    <li class="e col-4 border p-4">컨텐츠e</li>
+    <li class="e col-4 border p-4">컨텐츠e</li>
+    <li class="t col-4 border p-4">컨텐츠t</li>
+    <li class="s col-4 border p-4">컨텐츠s</li>
+    <li class="t col-4 border p-4">컨텐츠t</li>
+    <li class="h col-4 border p-4">컨텐츠h</li>
+    <li class="t col-4 border p-4">컨텐츠t</li>
+    <li class="t col-4 border p-4">컨텐츠t</li>
+    <li class="h col-4 border p-4">컨텐츠h</li>
+    <li class="h col-4 border p-4">컨텐츠h</li>
+    <li class="t col-4 border p-4">컨텐츠t</li>
+    <li class="t col-4 border p-4">컨텐츠t</li>
+    <li class="s col-4 border p-4">컨텐츠s</li>
+    <li class="s col-4 border p-4">컨텐츠s</li>
+    <li class="h col-4 border p-4">컨텐츠h</li>
+    <li class="t col-4 border p-4">컨텐츠t</li>
+    <li class="t col-4 border p-4">컨텐츠t</li>
+    <li class="t col-4 border p-4">컨텐츠t</li>
+    <li class="s col-4 border p-4">컨텐츠s</li>
+  </ul>
+  <script>
+    $(document).ready(function () {
+        let thubmcls = "";
+        $(".list li").click(function () {
+            thubmcls = $(this).data("filter");
+            $(".content li").hide();
+            $(thubmcls).show()
+        })
+    })
+</script>
+</body>
+
+</html>
