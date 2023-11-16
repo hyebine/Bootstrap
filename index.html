@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>반응형 부트스트랩</title>
   <!-- 부트스트랩 4.6 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -14,44 +14,83 @@
   <script src="./js/web.js"></script>
 </head>
 
-<body>
+<body id="toppage">
+  <header id="hd" class="fixed-top bg-white border-bottom py-4">
+    <ul class="d-flex"> <!--접근성 -->
+      <li><a href="#about" class="scrolla">소개섹션으로 이동해줘</a></li>
+      <li><a href="#product" class="scrolla">상품섹션으로</a></li>
+      <li><a href="#interview" class="scrolla">면접제안으로 스스로 이동해줘</a></li>
+      <li><a href="http://www.github.com" target="_blank">깃페이지로</a></li>
+    </ul>
+  </header>
+  <script>
+
+    $(document).ready(function () {
+
+      let targetnm = '';
+
+      $("a.scrolla").click(function (e) {
+        e.preventDefault(); //원래기능 죽여줘
+        targetnm = $(this).attr('href'); //속성접근 메서드 this a태그 값이없으면 가져와라
+        console.log(targetnm, $(targetnm).offset().top) //문자
+        //offset 위치를 말함
+        // $('a').attr('href','#none') // 모든 a 태그에 #none을 넣어라 
+        $("body, html").stop(true, true).animate({ scrollTop: $(targetnm).offset().top })
+
+        //불켜줘 (네비게이션에만 해당)
+        // $(this).addClass("act").parent().siblings().find('a').removeClass("act")
+
+        $("a.scrolla").removeClass('act')
+        $(this).addClass('act');
+
+        console.log($(this).parent().index(), $(this).addClass('act').parent().index())
+        //부모가 몇째인지 알려줘
+
+
+      })
+    })
+
+  </script>
+
   <!-- section.container-md.p-3#self>h2{셀프 문제 해결}+div.d-lg-flex.w-100.flex-row-reverse>ul.d-md-flex.flex-wrap>li.col-sm-6.d-sm-flex*4>img+div>strong+p^^^div.movie>img -->
 
   <section class="container-md p-3 border" id="self">
     <h2 class="text-center text-md-left"> <!--화면이 작아지면 텍스트가 중앙으로 -->
-      셀프 해결 안내
+      혼자 해결 <span class="d-none d-md-inline">하는</span> 서비스
     </h2>
     <div class="d-lg-flex flex-row-reverse w-100 align-items-center">
       <!--lg일때 떨어져라 d-flex 쓸때 w100 넣어야함-->
       <ul class="d-md-flex flex-wrap col">
-        <li class="col-md-6 border">
+        <li class="col-md-6 border text-center d-sm-flex align-items-center">
           <img src="https://cdn.bworld.co.kr/home/static/pc/img/main/main_self_01.png" alt="">
-          <div><strong>이전설치 신청</strong>
+          <div class="text-left">
+            <strong>이전설치 신청</strong>
             <p>
               이사 또는 가정내 설치 장소 변경이 필요할 때 간편하게 신청해 보세요.
             </p>
           </div>
         </li>
-        <li class="col-md-6 border">
+        <li class="col-md-6 border text-center d-sm-flex align-items-center">
           <img src="https://cdn.bworld.co.kr/home/static/pc/img/main/main_self_02.png" alt="">
-          <div><strong>가정내 PC/TV이동 신청</strong>
+          <div class="text-left">
+            <strong>가정내 PC/TV이동 신청</strong>
             <p>
               집안 내 설치장소 이동이 필요할 때 간편하게 신청해 보세요.
             </p>
           </div>
         </li>
-        <li class="col-md-6 border">
+        <li class="col-md-6 border text-center d-sm-flex align-items-center">
           <img src="https://cdn.bworld.co.kr/home/static/pc/img/main/main_self_03.png" alt="">
-          <div>
+          <div class="text-left">
             <strong>간편 진단/AS 조치</strong>
             <p>
               서비스 진단.조치.자동 리셋까지 간편하게 이용 할 수 있어요.
             </p>
           </div>
         </li>
-        <li class="col-md-6 border">
+        <li class="col-md-6 border text-center d-sm-flex align-items-center">
           <img src="https://cdn.bworld.co.kr/home/static/pc/img/main/main_self_04.png" alt="">
-          <div>
+          <div class="text-left">
             <strong>리모컨 분실/파손 교체 신청</strong>
             <p>
               B tv 리모컨을 분실.파손하셨다면 간편하게 구매 할 수 있어요.
@@ -60,8 +99,21 @@
         </li>
       </ul>
       <img src="https://cdn.bworld.co.kr/home/static/pc/img/main/img_selp_video.png" alt="">
+      <!--원래 div로 막아줘야함 안막아줬을때 align center 적용-->
     </div>
   </section>
+  <section class="vh-100 border" id="about">
+    <h2>나는 소개섹션</h2>
+  </section>
+  <section class="vh-100 border" id="product">
+    <h2>나는 상품</h2>
+  </section>
+  <section class="vh-100 border" id="interview">
+    <h2>나는 면접제안</h2>
+  </section>
+
+  <a href="#toppage" class="position-fixed scrolla" id="topbtn" style="bottom:0; right:0;">클릭하면 상단으로 가게 해줘</a>
+
 </body>
 
 </html>
